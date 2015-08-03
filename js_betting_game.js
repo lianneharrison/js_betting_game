@@ -36,26 +36,32 @@
 
 
 function bettingGame() {
+
   var funds = 100;
-  var bet = prompt("How much do you want to bet, $5 or $10?");
-  var answer = parseInt(prompt("Pick a number between 1 and 10"));
-  var random = Math.floor((Math.random() * 10) + 1);
-  if (answer === random){
-    console.log(random);
-    alert("Well done!");
-    funds += bet * 2;
-    console.log(funds)
-  }
-  else if (answer === random + 1 || answer === random - 1){
-    console.log(random);
-    alert("Nearly!");
-    alert(funds)
-  }
-  else {
-    console.log(random);
-    alert("You lose!");
-    funds -= bet;
-    alert(funds)
+
+  while (funds > 0) {
+
+    var bet = prompt("How much do you want to bet, $5 or $10?");
+    var answer = parseInt(prompt("Pick a number between 1 and 10"));
+    var random = Math.floor((Math.random() * 10) + 1);
+
+    if (answer === random){
+      console.log(random);
+      alert("Well done!");
+      funds += bet * 2;
+      console.log(funds)
+    }
+    else if (answer === random + 1 || answer === random - 1){
+      console.log(random);
+      alert("Nearly!");
+      alert(funds)
+    }
+    else {
+      console.log(random);
+      alert("You lose!");
+      funds -= bet;
+      alert(funds)
+    }
   }
 }
 
