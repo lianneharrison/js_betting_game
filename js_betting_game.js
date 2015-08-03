@@ -38,33 +38,37 @@ $(document).ready(function () {
 
   $('#btn').click(bettingGame);
 
+  var funds = 100;
+
   function bettingGame() {
 
-    var funds = 100;
+    if (funds <= 0) {
+      alert("You have run out of funds! You can't place any bets.");
+    }
 
-      var bet = $('#amount').val();
-      var answer = parseInt($('#guess').val());
-      var random = Math.floor((Math.random() * 10) + 1);
-      var feedback = $('#feedback')
-      var totalFunds = $('#totalFunds')
+    var bet = $('#amount').val();
+    var answer = parseInt($('#guess').val());
+    var random = Math.floor((Math.random() * 10) + 1);
+    var feedback = $('#feedback')
+    var totalFunds = $('#totalFunds')
 
-      if (answer === random) {
-        console.log(random);
-        feedback.text("Well done!");
-        funds += bet * 2;
-        totalFunds.text(funds)
-      }
-      else if (answer === random + 1 || answer === random - 1) {
-        console.log(random);
-        feedback.text("Nearly!");
-        totalFunds.text(funds)
-      }
-      else {
-        console.log(random);
-        feedback.text("You lose!");
-        funds -= bet;
-        totalFunds.text(funds)
-      }
+    if (answer === random) {
+      console.log(random);
+      feedback.text("Well done!");
+      funds += bet * 2;
+      totalFunds.text(funds)
+    }
+    else if (answer === random + 1 || answer === random - 1) {
+      console.log(random);
+      feedback.text("Nearly!");
+      totalFunds.text(funds)
+    }
+    else {
+      console.log(random);
+      feedback.text("You lose!");
+      funds -= bet;
+      totalFunds.text(funds)
+    }
   }
 });
 
