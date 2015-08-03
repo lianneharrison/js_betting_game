@@ -34,36 +34,39 @@
   // }
   //psuedocode above
 
+$(document).ready(function () {
 
-function bettingGame() {
+  $('#btn').click(bettingGame);
 
-  var funds = 100;
+  function bettingGame() {
 
-  while (funds > 0) {
+    var funds = 100;
 
-    var bet = prompt("How much do you want to bet, $5 or $10?");
-    var answer = parseInt(prompt("Pick a number between 1 and 10"));
-    var random = Math.floor((Math.random() * 10) + 1);
+      var bet = $('#amount').val();
+      var answer = parseInt($('#guess').val());
+      var random = Math.floor((Math.random() * 10) + 1);
+      var feedback = $('#feedback')
+      var totalFunds = $('#totalFunds')
 
-    if (answer === random){
-      console.log(random);
-      alert("Well done!");
-      funds += bet * 2;
-      console.log(funds)
-    }
-    else if (answer === random + 1 || answer === random - 1){
-      console.log(random);
-      alert("Nearly!");
-      alert(funds)
-    }
-    else {
-      console.log(random);
-      alert("You lose!");
-      funds -= bet;
-      alert(funds)
-    }
+      if (answer === random) {
+        console.log(random);
+        feedback.text("Well done!");
+        funds += bet * 2;
+        totalFunds.text(funds)
+      }
+      else if (answer === random + 1 || answer === random - 1) {
+        console.log(random);
+        feedback.text("Nearly!");
+        totalFunds.text(funds)
+      }
+      else {
+        console.log(random);
+        feedback.text("You lose!");
+        funds -= bet;
+        totalFunds.text(funds)
+      }
   }
-}
+});
 
 
 
