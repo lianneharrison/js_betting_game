@@ -36,17 +36,13 @@
 
 $(document).ready(function () {
 
-
+  $('#reset').hide();
 
   $('#btn').click(bettingGame);
 
   var funds = 100;
 
   function bettingGame() {
-
-    if (funds <= 0) {
-      alert("You have run out of funds! You can't place any bets.");
-    }
 
     var bet = $('#amount').val();
     var answer = parseInt($('#guess').val());
@@ -67,20 +63,31 @@ $(document).ready(function () {
     }
     else {
       console.log(random);
+
       feedback.text("You lose!");
       funds -= bet;
       totalFunds.text(funds)
+
+      if (funds <= 0) {
+        funds = 0;
+        totalFunds.text(funds);
+        $('#btn').hide();
+        $('#reset').show();
+        alert("You have run out of funds! You can't place any bets.");
+      }
     }
   }
 
   function resetCode(){
     funds = 100;
+    $('#totalFunds').text(funds);
+    $('#btn').show();
+    $('#reset').hide();
   }
 
   $("#reset").click(resetCode);
-  
-});
 
+});
 
 
 
