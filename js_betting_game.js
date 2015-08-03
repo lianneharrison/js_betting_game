@@ -36,6 +36,8 @@
 
 $(document).ready(function () {
 
+
+
   $('#btn').click(bettingGame);
 
   var funds = 100;
@@ -70,6 +72,13 @@ $(document).ready(function () {
       totalFunds.text(funds)
     }
   }
+
+  function resetCode(){
+    funds = 100;
+  }
+
+  $("#reset").click(resetCode);
+  
 });
 
 
